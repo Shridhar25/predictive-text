@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://kit.fontawesome.com/275e820b94.js" crossorigin="anonymous"></script>
+    <style>
+
+
+.parent{ 
+  display:flex; 
+  flex-direction:row; 
+  height: 300px;
+  width:1136px; 
+} 
+.child{ 
+    width:50%; 
+    margin:0px 2px; 
+    height:100%; 
+    font-family: 'Montserrat', sans-serif, cursive;
+}  
+.title{
+    color: #fffff1;
+    text-align: center;
+    margin-top: 40px;
+    text-shadow: 2px 2px #000000;
+    font-size: 55px;
+}
+
+.text-editor-main{
+    width: 1200px;
+    align-content: center;
+    border: 1px;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 0 .3rem 0.9rem rgba(0,0,0,.15) !important;
+}
+
+.options{
+    background-color: #e7eaef;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.my-text-btn{
+    border: none;
+    align-content: center;
+    background-color: #e7eaef;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: rgb(112, 112, 112);
+    margin: 5px;
+    cursor: pointer;
+}
+
+.my-text-btn:hover{
+    background-color: #d3d3d3;
+}
+
+
+
+.textOutput{
+    height: 300px;
+    width: 1130px;
+    font-size: 20px;
+    overflow: scroll;
+    padding: 30px;
+}
+
+.contentOutput{
+    height:350px;
+    width: 100%;
+    font-size: 20px;
+    padding: 30px;
+}
+
+*{padding: 0; margin: 0; box-sizing: border-box;}
+body{height: 600px;}
+header {
+    text-align: center;
+	width: 100%;
+	height: 200px;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+    font-family: 'Kaushan Script', cursive;
+	border-radius: 0 0 85% 85% / 30%;
+}
+header .overlay{
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+    font-family: 'Kaushan Script', cursive;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #333;
+    background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+	
+}
+
+.submit{
+    color: #FFF;
+	text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);  
+  size: 20px;
+  font-size: 20px;
+  align-self: center;
+  margin: 4px 2px;
+  padding: 16px 32px;
+}
+
+h1 {
+	font-family: 'Dancing Script', cursive;
+	font-size: 60px;
+	margin-bottom: 25px;
+    margin-top: 0%;
+}
+
+.center{
+    left: 50%;
+    margin-top: 20%;
+    margin-left: 40%;
+    top: 50%;
+    padding: 10px;
+}
+button {
+	border: none;
+	outline: none;
+	padding: 10px 20px;
+	border-radius: 50px;
+	color: #333;
+	background: #fff;
+	margin-bottom: 50px;
+	box-shadow: 0 3px 20px 0 #0000003b;
+}
+button:hover{
+	cursor: pointer;
+}
+
+    </style>
+    <title>Text Editor</title>
+</head>
+<body>
+    <header>
+        <div class="overlay">
+            <h1>Next Word Predictor</h1>
+        </div>
+    </header>
+    <div class="text-editor-main">
+    <div class="options">
+        <button class="my-text-btn" data-command="undo" title="Undo">
+            <i class ="fas fa-undo"></i>
+        </button>
+
+        <button class="my-text-btn" data-command="redo" title="Redo">
+            <i class ="fas fa-redo"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="bold" title="Bold">
+            <i class ="fas fa-bold"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="italic" title="Italics">
+            <i class ="fas fa-italic"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="underline" title="Underline">
+            <i class ="fas fa-underline"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="strikeThrough" title="Strike Through">
+            <i class ="fas fa-strikethrough"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="superscript" title="Superscript">
+            <i class ="fas fa-superscript"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="subscript" title="Subscript">
+            <i class ="fas fa-subscript"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="insertUnorderedList" title="Unordered List">
+            <i class ="fas fa-list-ul"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="insertOrderedList" title="Ordered List">
+            <i class ="fas fa-list-ol"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="justifyLeft" title="Left Align">
+            <i class ="fas fa-align-left"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="justifyCenter" title="Center Align">
+            <i class ="fas fa-align-center"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="justifyRight" title="Right Align">
+            <i class ="fas fa-align-right"></i>
+        </button>
+        
+        <button class="my-text-btn" data-command="justifyFull" title="Justify">
+            <i class ="fas fa-align-justify"></i>
+        </button>
+        <label class="my-text-btn">Predicted Word - {{last_word}}</label>
+        </div>
+
+        <div class="contentOutput">
+            <div class="parent">                                
+                <form action="#" method="POST">
+                    <input type="text" name="text" class="textOutput" placeholder="Enter Text Here" value="{{pred}}" ></input>
+                </form>
+            </div>
+        </div>
+
+        
+</body>
+</html>
